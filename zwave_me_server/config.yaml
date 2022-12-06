@@ -5,7 +5,7 @@ slug: zwave_me_server
 description: 'Z-Wave.Me Add-on for HAss'
 arch:
   - amd64
-url: https://github.com/lawfulchaos/addon-zwave-me
+url: https://github.com/Z-Wave-Me/ha-z-wave-me-addon
 ports:
   8083/tcp: 8083
 devices:
@@ -13,3 +13,4 @@ devices:
 webui: http://[HOST]:[PORT:8083]
 ports_description:
   8083/tcp: Z-Wave.Me communication port
+image: "ghcr.io/Z-Wave-Me/{arch}-ha-z-wave-me-addon"
