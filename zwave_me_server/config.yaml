@@ -1,10 +1,11 @@
 name: Z-Wave.Me Add-on
 startup: services
-version: 1.0.6
+version: 1.0.7
 slug: zwave_me_server
 description: 'Z-Wave.Me Add-on for HAss'
 arch:
   - amd64
+  - aarch64
   - armhf
 url: https://github.com/Z-Wave-Me/addon-zwave-me
 ports:

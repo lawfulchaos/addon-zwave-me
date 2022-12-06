@@ -1,0 +1,28 @@
+FROM ubuntu:focal
+
+RUN apt-get update && \
+    apt-get install -y wget procps gpg libcurl4 logrotate
+
+ENV branch=ubuntu
+ENV distro=focal
+
+ENV TZ=Europe/Moscow
+COPY run.sh /
+COPY install.sh /
+RUN chmod a+x /run.sh
+RUN chmod a+x /install.sh
+
+WORKDIR /opt
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+# Install Z-Wave.Me
+RUN /install.sh
+
+ENV LD_LIBRARY_PATH=/opt/z-way-server/libs
+ENV PATH=/opt/z-way-server:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+VOLUME ["/opt/z-way-server/config/zddx"]
+VOLUME ["/opt/z-way-server/automation/storage"]
+
+EXPOSE 8083
+CMD /run.sh
